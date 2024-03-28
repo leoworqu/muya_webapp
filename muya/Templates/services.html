@@ -1,0 +1,19 @@
+<div class="s_header">
+    <h1>SERVICES</h1>
+    {% include "search.html" %}
+</div>
+<div class="card-list">
+    {% for post in posts %}
+        <a href="service" class="card-item">
+            <img src="static/developer.jpg" alt="Card Image">
+            <span class="developer">Developer</span>
+            <h3>{{post.title}}</h3>
+            <div class="cont">
+                <i class="fas fa-arrow-right card-icon"></i>
+                    <div class="s_profile-info">
+                    <img src="{{url_for('static', filename='profile_images/' + post.author.image_file )}}" alt="Profile Picture">
+                    </div>     
+            </div> 
+        </a>
+    {% endfor %}
+</div>

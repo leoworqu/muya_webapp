@@ -1,0 +1,160 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  max-width: 1000px;
+  height: max-content;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 20px;
+  padding-top: 30px;
+}
+
+.logo img {
+  padding: 15px;
+  width: 120px;
+  height: auto;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu button{
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+
+.button {
+  box-shadow: 0 4px 0 rgba(255, 0, 0, 0.2);
+  border: 2px solid rgba(255, 0, 0, 0.2);
+  background-color: white;
+  color: #C12929;
+  padding: 10px 20px; 
+  cursor: pointer;
+  transition: ease-in;
+}
+
+.button:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 rgba(255, 0, 0, 0.2);
+}
+
+.button1 {
+  box-shadow: 0 4px 0 rgba(255, 0, 0, 0.2);
+  background-color: #C12929; 
+  color: white;
+  padding: 10px 20px; 
+  border: none; 
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.button1:active {
+  box-shadow: 0 0 0 rgba(255, 0, 0, 0.2);
+  transform: translateY(3px);
+  color: white; 
+}
+
+.hero{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+}
+
+.hero h1{
+  background: linear-gradient(to right, #ff4e50, #f9d423);
+  -webkit-background-clip: text;
+ 
+  text-align: center;
+  font-weight: 800;
+}
+
+.text_danger{
+  color : red;
+}
+
+footer {
+  margin-top: 33px;
+  width: 100%;
+  background-color: #ffffff;
+  height: 60px;
+  border-top: 1px solid #C12929;
+  border-bottom: 1px solid #C12929;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #C12929;
+}
+
+footer p{
+  position: relative;
+  text-align: center;
+  margin: 20px;  
+  padding-left: 60px;
+  padding-right: 60px;
+  font-weight: 500;
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .menu {
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .button1 {
+    padding: 10px 30px; 
+  }
+
+  .card {
+    width: 200px;
+    height: 300px;
+  }
+
+  .card-container {
+    height: 1100px;
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .menu a {
+    margin: 5px 0;
+    padding: 0 10px;
+    display: block;
+  }
+
+  .footer{
+    padding: 10px;
+    height: 60px;
+  }
+
+  .footer p{
+    padding: 10px;
+  }
+
+  .footer a{
+    padding: 10px;
+  }
+
+  .hero{
+    height: 270px;
+  }
+}

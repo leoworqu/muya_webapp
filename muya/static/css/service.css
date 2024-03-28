@@ -1,0 +1,72 @@
+.sp_header{
+    text-align: center;
+}
+.service-header {
+    margin-bottom: 30px;
+  }
+  
+  .service-header h1 {
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  
+  .service-images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .service-images img {
+    width: calc(33.333% - 10px);
+    border-radius: 8px;
+  }
+  
+  .gig-description {
+    margin-bottom: 30px;
+  }
+  
+  .gig-description h2 {
+    color: #333;
+    margin-top: 0;
+  }
+  
+  .gig-description p {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* Review Section Styles */
+  
+  .review-section {
+    margin-top: 30px;
+  }
+  
+  .review {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .rating p {
+    color: #333;
+    font-size: 18px;
+    margin: 0 5px 0 0;
+  }
+  
+  .rating img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .comment {
+    color: #333;
+    margin-top: 5px;
+  }
+  
+  .author {
+    color: #666;
+    font-style: italic;
+  }

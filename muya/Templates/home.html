@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block navmenu %}
+  {% if current_user.is_authenticated %}
+      <div class="menu">
+        <a href="{{url_for('create_service')}}"><button class="button">Create a service</button></a>
+        <a href="account"><button class="button">Account</button></a>
+        <a href="logout"><button class="button1">Log Out</button></a>
+      </div>
+  {% else %}
+      <div class="menu">
+        <a href="login"><button class="button">Log in</button></a>
+      </div>
+  {% endif %}
+{% endblock navmenu %}
+
+
+{% block content %}
+{% if current_user.is_authenticated %}
+  {% include "services.html" %}
+
+{% else %}
+  <div class="card-container">
+    <div class="hero">
+      <h1>CONNECT, <br>FIND THE RIGHT SERVICE<br> with<br> MUYA APP</h1>
+    </div>
+
+      <div class="card">
+          <img src="static/freelancer-01.jpg" alt="Example Image" class="card-img">
+          <div class="card-content">
+              <h2 class="card-text">Do you want to post a service?</h2>
+              <div class="card-actions">
+                <a href="register"><button class="card-btn">SIGN UP</button></a>
+            </div>
+          </div>
+      </div>
+  </div>
+  {% include "services.html" %}
+{% endif %}
+
+{% endblock content %}
+

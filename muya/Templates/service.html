@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block navmenu %}
+  {% if current_user.is_authenticated %}
+      <div class="menu">
+        <a href="service/new"><button class="button">Create a service</button></a>
+        <a href="account"><button class="button">Account</button></a>
+        <a href="logout"><button class="button1">Log Out</button></a>
+      </div>
+  {% else %}
+      <div class="menu">
+        <a href="login"><button class="button">Log in</button></a>
+      </div>
+  {% endif %}
+{% endblock navmenu %}
+
+{% block content %}
+<div class="container">
+    <div class="service-header">
+      <h1>Web Design Service</h1>
+      <div class="service-images">
+        <img src="static/webservice.jpg" alt="Image 1">
+        <img src="static/webservice1.jpg" alt="Image 2">
+        <img src="static/webservice2.jpg" alt="Image 3">
+      </div>
+    </div>
+    
+    <div class="gig-description">
+      <h2>About This Service</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit, tortor nec interdum tempus, ex erat venenatis tortor, vel sodales magna dolor sit amet mi.</p>
+      <p>Ut vehicula lectus nec neque porttitor, nec tempor lorem ultrices. Integer vitae ex nec magna feugiat dapibus. Nulla facilisi. Proin a lectus id ligula aliquam venenatis. Donec at neque et magna tincidunt posuere.</p>
+      <p>Curabitur vel mauris sed velit maximus vehicula ut sit amet dui. Vivamus tincidunt tincidunt mauris, eu euismod libero consequat ac.</p>
+      
+    </div>
+  
+    <div class="container">
+        <h2 class="sp_header">Service Provider</h2>
+        <div class="profile-header">
+          <div class="profile-info">
+            <img src="static/profile.jpg" alt="Profile Picture">
+            <div class="profile-details">
+              <h1>John Doe</h1>
+              <p>Freelance Web Developer</p>
+              <p>New York, USA</p>
+            </div>
+          </div>
+          <div class="rating">
+            <p>5.0</p>
+            <img src="static/star.svg" alt="Star Icon">
+            <span>(120 reviews)</span>
+          </div>
+        </div>
+        
+        <div class="services">
+          <div class="service">
+            <h2>Web Design</h2>
+            <p>Experienced in creating responsive and visually appealing websites using modern design techniques.</p>
+          </div>
+          <div class="service">
+            <h2>Web Development</h2>
+            <p>Skilled in frontend and backend development, proficient in HTML, CSS, JavaScript, and various frameworks.</p>
+          </div>
+          <div class="service">
+            <h2>SEO Optimization</h2>
+            <p>Knowledgeable in SEO best practices to ensure websites rank well on search engines and attract more traffic.</p>
+          </div>
+        </div>
+      </div>
+  
+    <!-- Review Section -->
+    <div class="review-section">
+      <h2>Reviews</h2>
+      <div class="review">
+        <div class="rating">
+          <p>5.0</p>
+          <img src="static/star.svg" alt="Star Icon">
+        </div>
+        <p class="comment">"Excellent service, very satisfied with the results!"</p>
+        <p class="author">- Jane Doe</p>
+      </div>
+      <div class="review">
+        <div class="rating">
+          <p>4.5</p>
+          <img src="static/star.svg" alt="Star Icon">
+        </div>
+        <p class="comment">"Great communication and fast delivery."</p>
+        <p class="author">- John Smith</p>
+      </div>
+      <!-- Add more reviews here -->
+    </div>
+  </div>
+
+  {% endblock content %}

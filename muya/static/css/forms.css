@@ -1,0 +1,105 @@
+.content-section {
+    width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Form styles */
+  .form {
+    padding: 20px;
+  }
+
+  .fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .legend {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  /* Input styles */
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.submit {
+    width: 100%;
+    background-color: #C12929;
+    box-shadow: 0 4px 0 rgba(255, 0, 0, 0.2);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+.submit:hover {
+    background-color: #740f0f;
+}
+
+.submit:active {
+    background-color: #740f0f;
+    box-shadow: 0 0 0 rgba(255, 0, 0, 0.2);
+    transform: translateY(3px);
+}
+
+.redirect {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.redirect small {
+    color: #999;
+}
+
+.redirect a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.redirect a:hover {
+    text-decoration: underline;
+}
+
+
+/* Flash messages*/
+
+.flash {
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.flash-success {
+    background-color: #32df5a;
+    border-color: #c3e6cb;
+    color: white;
+}
+
+.flash-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+}
+
+.flash-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
