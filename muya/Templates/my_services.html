@@ -2,29 +2,18 @@
     <h1>MY SERVICES</h1>
 </div>
 <div class="card-list">
-    <a href="#" class="card-item">
-        <img src="static/developer.jpg" alt="Card Image">
-        <span class="developer">Developer</span>
-        <h3>A "developer" codes software and websites.</h3>
-        <div class="arrow">
-            <i class="fas fa-arrow-right card-icon"></i>
-        </div>
-    </a>
-    <a href="#" class="card-item">
-        <img src="static/designer.jpg" alt="Card Image">
-        <span class="designer">Designer</span>
-        <h3>A "designer" is a design expert.</h3>
-        <div class="arrow">
-            <i class="fas fa-arrow-right card-icon"></i>
-        </div>
-    </a>
-    <a href="#" class="card-item">
-        <img src="static/editor.jpg" alt="Card Image">
-        <span class="editor">Editor</span>
-        <h3>An "editor" ensures content quality and accuracy.</h3>
-        <div class="arrow">
-            <i class="fas fa-arrow-right card-icon"></i>
-        </div>
-    </a>
+    {% for post in posts %}
+        <a href="{{url_for('service'), post_id = post.id}}" class="card-item">
+            <img src="static/developer.jpg" alt="Card Image">
+            <span class="developer">Developer</span>
+            <h3>{{post.title}}</h3>
+            <div class="cont">
+                <i class="fas fa-arrow-right card-icon"></i>
+                    <div class="s_profile-info">
+                    <img src="{{url_for('static', filename='profile_images/' + post.author.image_file )}}" alt="Profile Picture">
+                    </div>     
+            </div> 
+        </a>
+    {% endfor %}
 </div>
 

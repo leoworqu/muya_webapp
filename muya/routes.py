@@ -62,10 +62,10 @@ def logout():
 
 
 
-@app.route("/service")
-def service():
-    posts = Service.query.all()
-    return render_template("service.html", posts=posts)
+@app.route("/service/<int:service_id>")
+def service(service_id):
+    service = Service.query.get_or_404(service_id)
+    return render_template("service.html", service=service)
 
 @app.route("/new_service",  methods=['GET', 'POST'])
 @login_required

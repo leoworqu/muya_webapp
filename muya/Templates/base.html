@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BaleMUYA</title>
-<link rel="stylesheet" href="static/css/styles.css">
-<link rel="stylesheet" href="static/css/card.css">
-<link rel="stylesheet" href="static/css/services.css">
-<link rel="stylesheet" href="static/css/account.css">
-<link rel="stylesheet" href="static/css/search.css">
-<link rel="stylesheet" href="static/css/service.css">
-<link rel="stylesheet" href="static/css/forms.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/service.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
     <nav class="navbar">
       <div class="logo">
         <a href="/"> 
-          <img src="static/logo 1.png" alt="Logo">
+          <img src="{{ url_for('static', filename='logo 1.png') }}" alt="Logo">
         </a>
       </div>
       {% block navmenu %}{% endblock %}

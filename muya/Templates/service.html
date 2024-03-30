@@ -3,13 +3,13 @@
 {% block navmenu %}
   {% if current_user.is_authenticated %}
       <div class="menu">
-        <a href="service/new"><button class="button">Create a service</button></a>
-        <a href="account"><button class="button">Account</button></a>
-        <a href="logout"><button class="button1">Log Out</button></a>
+        <a href="{{url_for('create_service')}}"><button class="button">Create a service</button></a>
+        <a href="{{url_for('account')}}"><button class="button">Account</button></a>
+        <a href="{{url_for('logout')}}"><button class="button1">Log Out</button></a>
       </div>
   {% else %}
       <div class="menu">
-        <a href="login"><button class="button">Log in</button></a>
+        <a href="{{url_for('login')}}"><button class="button">Log in</button></a>
       </div>
   {% endif %}
 {% endblock navmenu %}
@@ -17,11 +17,11 @@
 {% block content %}
 <div class="container">
     <div class="service-header">
-      <h1>Web Design Service</h1>
+      <h1>{{service.title}}</h1>
       <div class="service-images">
-        <img src="static/webservice.jpg" alt="Image 1">
-        <img src="static/webservice1.jpg" alt="Image 2">
-        <img src="static/webservice2.jpg" alt="Image 3">
+        <img src="{{ url_for('static', filename='webservice.jpg') }}" alt="Image 1">
+        <img src="{{ url_for('static', filename='webservice1.jpg') }}" alt="Image 2">
+        <img src="{{ url_for('static', filename='webservice.jpg') }}" alt="Image 3">
       </div>
     </div>
     
@@ -37,16 +37,16 @@
         <h2 class="sp_header">Service Provider</h2>
         <div class="profile-header">
           <div class="profile-info">
-            <img src="static/profile.jpg" alt="Profile Picture">
+            <img src="{{url_for('static', filename='profile_images/' + service.author.image_file )}}" alt="Profile Picture">
             <div class="profile-details">
-              <h1>John Doe</h1>
+              <h1>{{service.author.username}}</h1>
               <p>Freelance Web Developer</p>
               <p>New York, USA</p>
             </div>
           </div>
           <div class="rating">
             <p>5.0</p>
-            <img src="static/star.svg" alt="Star Icon">
+            <img src="{{ url_for('static', filename='star.svg') }}" alt="Star Icon">
             <span>(120 reviews)</span>
           </div>
         </div>
@@ -73,7 +73,7 @@
       <div class="review">
         <div class="rating">
           <p>5.0</p>
-          <img src="static/star.svg" alt="Star Icon">
+          <img src="{{ url_for('static', filename='star.svg') }}" alt="Star Icon">
         </div>
         <p class="comment">"Excellent service, very satisfied with the results!"</p>
         <p class="author">- Jane Doe</p>
@@ -81,7 +81,7 @@
       <div class="review">
         <div class="rating">
           <p>4.5</p>
-          <img src="static/star.svg" alt="Star Icon">
+          <img src="{{ url_for('static', filename='star.svg') }}" alt="Star Icon">
         </div>
         <p class="comment">"Great communication and fast delivery."</p>
         <p class="author">- John Smith</p>
