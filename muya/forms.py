@@ -36,4 +36,5 @@ class accountUpdateForm(FlaskForm):
 class postForm(FlaskForm):
     title = StringField('Title of Job', validators=[DataRequired()])
     description = TextAreaField('Detailed description of Job' , validators=[DataRequired()])
+    service_picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField('Create Job')

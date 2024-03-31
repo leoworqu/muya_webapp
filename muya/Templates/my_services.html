@@ -4,7 +4,7 @@
 <div class="card-list">
     {% for service in user_service %}
         <a href="{{ url_for('service', service_id=service.id) }}" class="card-item">
-            <img src="static/developer.jpg" alt="Card Image">
+            <img src="{{ url_for('static', filename='service_images/' + service.image_files) }}" alt="Card Image">
             <span class="developer">Developer</span>
             <h3>{{service.title}}</h3>
             <p>{{service.content}}</p>

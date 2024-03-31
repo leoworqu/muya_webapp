@@ -22,6 +22,7 @@ class Service(db.Model):
     title = db.Column(db.String, nullable=False)
     date_posted = db.Column(db.DateTime(120), nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
+    image_files = db.Column(db.String(120), nullable=False, default='default.jpg')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):

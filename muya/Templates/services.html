@@ -5,7 +5,7 @@
 <div class="card-list">
     {% for post in posts %}
         <a href="{{url_for('service', service_id = post.id)}}" class="card-item">
-            <img src="static/developer.jpg" alt="Card Image">
+            <img src="{{ url_for('static', filename='service_images/' + post.image_files) }}" alt="Card Image">
             <span class="developer">Category</span>
             <h3>{{post.title}}</h3>
             <p>{{post.content}}</p>

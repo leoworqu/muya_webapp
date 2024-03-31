@@ -8,7 +8,7 @@
 {% endblock navmenu %}
 
 {% block content %}
-        <form method="POST" action="" class="form">
+        <form method="POST" action="" class="form" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <fieldset class="fieldset">
                 <legend class="legend">Update your Service</legend>
@@ -19,6 +19,15 @@
                 <div>
                     {{  form.description.label(class="") }}
                     {{  form.description(class="input") }}
+                </div>
+                <div>
+                    {{  form.service_picture.label(class="") }}
+                    {{  form.service_picture(class="input") }}
+                    {% if form.service_picture.errors %}
+                      {% for errors in form.service_picture.errors %}
+                        <span class="text_danger">{{errors}}</span></br>
+                      {% endfor %}
+                    {% endif %}
                 </div>
             </fieldset>
             <div>

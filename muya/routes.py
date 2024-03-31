@@ -11,6 +11,34 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 
 
+def save_images(form_picture):
+    R_HEX = secrets.token_hex(8)
+    _, f_ext =os.path.splitext(form_picture.filename)
+    PIC_FN = R_HEX + f_ext
+    picture_path = os.path.join(app.root_path, 'static/profile_images', PIC_FN)
+    
+    output_size = (200, 200)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return PIC_FN
+
+def save_image(form_picture):
+    R_HEX = secrets.token_hex(8)
+    _, f_ext =os.path.splitext(form_picture.filename)
+    PIC_FN = R_HEX + f_ext
+    picture_path = os.path.join(app.root_path, 'static/service_images', PIC_FN)
+    
+    output_size = (500, 500)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return PIC_FN
+
+
+
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -65,18 +93,27 @@ def logout():
 @app.route("/service/<int:service_id>")
 def service(service_id):
     service = Service.query.get_or_404(service_id)
-    return render_template("service.html", service=service)
+    service_image = url_for('static', filename='service_images/' + service.image_files )
+    return render_template("service.html", service=service, service_image=service_image)
 
 @app.route("/new_service",  methods=['GET', 'POST'])
 @login_required
 def create_service():
     form = postForm()
     if form.validate_on_submit():
-        post = Service(title=form.title.data, content=form.description.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your service is created succesfully' , 'success')
-        return redirect(url_for('index'))
+        if form.service_picture.data:
+            picture_file = save_image(form.service_picture.data)
+            post = Service(title=form.title.data, content=form.description.data, author=current_user, image_files=picture_file)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your service is created success' , 'success')
+            return redirect(url_for('index'))
+        else:
+            post = Service(title=form.title.data, content=form.description.data, author=current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your service is created succesfully' , 'success')
+            return redirect(url_for('index'))
     return render_template("create_service.html", form=form)
 
 
@@ -88,8 +125,11 @@ def update_service(service_id):
         abort(403)
     form = postForm()
     if form.validate_on_submit():
-        service.title = form.title.data
-        service.content = form.description.data
+        if form.service_picture.data:
+            picture_file = save_image(form.service_picture.data)
+            service.image_files = picture_file
+            service.title = form.title.data
+            service.content = form.description.data
         db.session.commit()
         flash('Your service is Updated succesfully' , 'success')
         return redirect(url_for('service', service_id=service.id))
@@ -98,23 +138,19 @@ def update_service(service_id):
         form.description.data = service.content
     return render_template("updateservice.html", service=service, form=form)
 
+@app.route("/service/<int:service_id>/delete", methods=['POST'])
+@login_required
+def delete_service(service_id):
+    service = Service.query.get_or_404(service_id)
+    if service.author != current_user:
+        abort(403)
+    db.session.delete(service)
+    db.session.commit()
+    flash('Your service is deleted succesfully' , 'success')
+    return redirect(url_for('index'))
 
 
 
-
-
-def save_images(form_picture):
-    R_HEX = secrets.token_hex(8)
-    _, f_ext =os.path.splitext(form_picture.filename)
-    PIC_FN = R_HEX + f_ext
-    picture_path = os.path.join(app.root_path, 'static/profile_images', PIC_FN)
-    
-    output_size = (200, 200)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
-    i.save(picture_path)
-
-    return PIC_FN
 
 @app.route("/account",  methods=['GET', 'POST'])
 @login_required
