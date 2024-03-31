@@ -1,7 +1,7 @@
 import secrets
 import os
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from muya.forms import registrationForm, loginForm, accountUpdateForm, postForm
 from muya.models import User, Service
 from muya import app, db, bcrypt
@@ -80,6 +80,25 @@ def create_service():
     return render_template("create_service.html", form=form)
 
 
+@app.route("/service/<int:service_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_service(service_id):
+    service = Service.query.get_or_404(service_id)
+    if service.author != current_user:
+        abort(403)
+    form = postForm()
+    if form.validate_on_submit():
+        service.title = form.title.data
+        service.content = form.description.data
+        db.session.commit()
+        flash('Your service is Updated succesfully' , 'success')
+        return redirect(url_for('service', service_id=service.id))
+    elif request.method == 'GET':
+        form.title.data = service.title
+        form.description.data = service.content
+    return render_template("updateservice.html", service=service, form=form)
+
+
 
 
 
@@ -113,8 +132,12 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
+    user_service = Service.query.filter_by(user_id=current_user.id).all()
     profile_image = url_for('static', filename='profile_images/' + current_user.image_file )
-    return render_template("account.html", profile_image=profile_image, form=form)
+    return render_template("account.html", profile_image=profile_image, form=form, user_service=user_service)
+
+
+
 
 
 

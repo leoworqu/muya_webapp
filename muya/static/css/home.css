@@ -1,0 +1,164 @@
+
+
+
+
+
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 510px;
+  }
+  
+  .hero h1{
+    padding-top: 30px;
+    background: linear-gradient(to right, #ff4e50, #f9d423);
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    font-weight: 900;
+    font-size: 3rem;
+  }
+  
+  
+  .hero .button1 {
+    margin-top: 30px;
+    width: 360px;
+    height: 45px;
+    box-shadow: 0 4px 0 rgba(255, 0, 0, 0.5);
+    border-radius: 30px;
+  }
+  
+  .hero .button1:active {
+    box-shadow: 0 0 0 rgba(255, 0, 0, 0.2);
+    transform: translateY(3px);
+    color: white; 
+  }
+  
+
+
+
+
+
+.features-section {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0;
+    align-items: center;
+}
+
+.features-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.feature-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+.feature-title- {
+    width: 300px;
+    font-size: 60px;
+    color: #333;
+    margin: 30px 0;
+    padding: 30px 0;
+    font-weight: 800;
+}
+
+.feature-title {
+    width: 300px;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.feature-description {
+    font-size: 16px;
+    color: #777;
+    line-height: 1.5;
+    width: 500px;
+}
+
+
+
+.about-section {
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.about-description {
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.team-members {
+    margin-bottom: 30px;
+}
+
+.team-members h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.team-members ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.team-members ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.team-members ul li:last-child {
+    margin-right: 0;
+}
+
+.github-link {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

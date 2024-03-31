@@ -4,12 +4,13 @@
   {% if current_user.is_authenticated %}
       <div class="menu">
         <a href="{{url_for('create_service')}}"><button class="button">Create a service</button></a>
-        <a href="account"><button class="button">Account</button></a>
-        <a href="logout"><button class="button1">Log Out</button></a>
+        <a href="{{url_for('account')}}"><button class="button">Account</button></a>
+        <a href="{{url_for('logout')}}"><button class="button1">Log Out</button></a>
       </div>
   {% else %}
       <div class="menu">
-        <a href="login"><button class="button">Log in</button></a>
+        <a href="{{url_for('login')}}"><button class="button">Log in</button></a>
+        <a href="{{url_for('register')}}"><button class="button1">Sign up</button></a>
       </div>
   {% endif %}
 {% endblock navmenu %}
@@ -20,22 +21,58 @@
   {% include "services.html" %}
 
 {% else %}
-  <div class="card-container">
     <div class="hero">
       <h1>CONNECT, <br>FIND THE RIGHT SERVICE<br> with<br> MUYA APP</h1>
+      <a href="{{url_for('register')}}"><button class="button1">GET STARTED</button></a>
     </div>
 
-      <div class="card">
-          <img src="static/freelancer-01.jpg" alt="Example Image" class="card-img">
-          <div class="card-content">
-              <h2 class="card-text">Do you want to post a service?</h2>
-              <div class="card-actions">
-                <a href="register"><button class="card-btn">SIGN UP</button></a>
-            </div>
+    
+    <section class="features-section">
+      
+      <div class="features-grid">
+          <div class="feature-item">
+              <h3 class="feature-title-">FEATURES</h3>
+              <img class="feature-image" src="{{ url_for('static', filename='feature1.png') }}" alt="Feature 1">
+              <h3 class="feature-title">Location Based Service Finder</h3>
+              <p class="feature-description">Receive instant notifications whenever a new task is assigned or completed, keeping you updated on project progress.</p>
+          </div>
+          <div class="feature-item">
+              <img class="feature-image" src="{{ url_for('static', filename='feature1.png') }}" alt="Feature 2">
+              <h3 class="feature-title">Seamless Collaboration</h3>
+              <p class="feature-description">Collaborate effortlessly with your providers in real-time, sharing messages, feedback, and updates without any hassle.</p>
+          </div>
+          <div class="feature-item">
+              <img class="feature-image" src="{{ url_for('static', filename='feature1.png') }}" alt="Feature 3">
+              <h3 class="feature-title">Customizable Workflows</h3>
+              <p class="feature-description">Create and customize workflows tailored to your team's specific needs, ensuring efficient task management and productivity.</p>
           </div>
       </div>
-  </div>
+    </section>
+
   {% include "services.html" %}
+
+  <section class="about-section">
+    <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-description">
+            <p>Our project was inspired by our collective passion for solving real-world problems and creating impactful solutions. It all began when we noticed the need for a more efficient task management system in our daily lives. As a team, we embarked on this journey to develop a tool that not only streamlines task management but also fosters seamless collaboration and productivity.</p>
+            <p>This project is a culmination of months of dedication and hard work, fueled by our shared vision to make a difference. It's not just a project; it's a testament to our commitment to innovation and excellence.</p>
+            <p>Timeline: Started in January 2023, we iterated through multiple prototypes and conducted extensive user testing to refine our product. After months of development, we are proud to present our final iteration.</p>
+            <p>This project is part of our Portfolio for Holberton School. You can find more about our journey and other projects <a href="https://holbertonschool.com/portfolio">here</a>.</p>
+        </div>
+        <div class="team-members">
+            <h3>Meet the Team</h3>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/team-member1" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/team-member1" target="_blank">GitHub</a></li>
+                <li><a href="https://twitter.com/team_member1" target="_blank">Twitter</a></li>
+            </ul>
+        </div>
+        <div class="github-link">
+            <a href="https://github.com/your-project-repository" class="btn" target="_blank">View Project on GitHub</a>
+        </div>
+    </div>
+  </section>
 {% endif %}
 
 {% endblock content %}

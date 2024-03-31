@@ -4,6 +4,12 @@ body {
   height: max-content;
   margin: 0 auto;
   padding: 0 20px;
+  button{
+    font-family: "Montserrat";
+  }
+  input{
+    font-family: "Montserrat";
+  }
 }
 
 .navbar {
@@ -64,20 +70,7 @@ body {
   color: white; 
 }
 
-.hero{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 180px;
-}
 
-.hero h1{
-  background: linear-gradient(to right, #ff4e50, #f9d423);
-  -webkit-background-clip: text;
- 
-  text-align: center;
-  font-weight: 800;
-}
 
 .text_danger{
   color : red;

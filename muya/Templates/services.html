@@ -6,8 +6,9 @@
     {% for post in posts %}
         <a href="{{url_for('service', service_id = post.id)}}" class="card-item">
             <img src="static/developer.jpg" alt="Card Image">
-            <span class="developer">Developer</span>
+            <span class="developer">Category</span>
             <h3>{{post.title}}</h3>
+            <p>{{post.content}}</p>
             <div class="cont">
                 <i class="fas fa-arrow-right card-icon"></i>
                     <div class="s_profile-info">
