@@ -38,3 +38,9 @@ class postForm(FlaskForm):
     description = TextAreaField('Detailed description of Job' , validators=[DataRequired()])
     service_picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField('Create Job')
+
+
+class reviewForm(FlaskForm):
+    comment = TextAreaField('Add a Comment' , validators=[DataRequired()])
+    like_or_dislike = BooleanField('DisLike This Service')
+    submit = SubmitField('submit')

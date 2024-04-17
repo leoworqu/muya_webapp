@@ -2,8 +2,8 @@ import secrets
 import os
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
-from muya.forms import registrationForm, loginForm, accountUpdateForm, postForm
-from muya.models import User, Service
+from muya.forms import registrationForm, loginForm, accountUpdateForm, postForm, reviewForm
+from muya.models import User, Service, Review
 from muya import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -90,11 +90,33 @@ def logout():
 
 
 
-@app.route("/service/<int:service_id>")
+
+
+
+
+
+
+
+
+
+@app.route("/service/<int:service_id>", methods=['GET', 'POST'])
 def service(service_id):
+    form = reviewForm()
     service = Service.query.get_or_404(service_id)
+    reviews = Review.query.filter_by(service_id=service_id).all()
+    user_service = Service.query.filter_by(user_id=service.user_id).all()
+    if form.validate_on_submit():
+        userid = current_user.id
+        post = Review(comment=form.comment.data, service_id=service_id, user_id=userid , like_or_dislike=form.like_or_dislike.data)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your review was posted!' , 'success')
+        return redirect(url_for('service' , service_id=service.id))
     service_image = url_for('static', filename='service_images/' + service.image_files )
-    return render_template("service.html", service=service, service_image=service_image)
+    return render_template("service.html", service=service,
+                           service_image=service_image,
+                           form=form, reviews=reviews, user_service=user_service)
+
 
 @app.route("/new_service",  methods=['GET', 'POST'])
 @login_required
@@ -152,6 +174,13 @@ def delete_service(service_id):
 
 
 
+
+
+
+
+
+
+
 @app.route("/account",  methods=['GET', 'POST'])
 @login_required
 def account():
@@ -168,9 +197,11 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
+    reviews = Review.query.filter_by(user_id=current_user.id).all()
     user_service = Service.query.filter_by(user_id=current_user.id).all()
     profile_image = url_for('static', filename='profile_images/' + current_user.image_file )
-    return render_template("account.html", profile_image=profile_image, form=form, user_service=user_service)
+    return render_template("account.html", profile_image=profile_image,
+                           form=form, user_service=user_service, reviews=reviews)
 
 
 

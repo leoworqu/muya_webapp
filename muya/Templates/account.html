@@ -45,26 +45,24 @@
 
       {% include "my_services.html" %}
 
-      <!-- Review Section -->
-      <div class="review-section">
-        <h2>Reviews</h2>
-        <div class="review">
-          <div class="rating">
-            <p>5.0</p>
-            <img src="static/star.svg" alt="Star Icon">
-          </div>
-          <p class="comment">"Excellent service, very satisfied with the results!"</p>
-          <p class="author">- Jane Doe</p>
-        </div>
-        <div class="review">
-          <div class="rating">
-            <p>4.5</p>
-            <img src="static/star.svg" alt="Star Icon">
-          </div>
-          <p class="comment">"Great communication and fast delivery."</p>
-          <p class="author">- John Smith</p>
-        </div>
-        <!-- Add more reviews here -->
+      <h2>Reviews</h2>
+        {% if reviews %}
+          {% for review in reviews %}
+          <!-- Review Section -->
+          
+            <div class="review">
+              <div class="rating">
+                <p>5.0</p>
+                <img src="{{ url_for('static', filename='star.svg') }}" alt="Star Icon">
+              </div>
+              <p class="comment">{{review.comment}}</p>
+              <p class="author">- {{review.review_author.username }}</p>
+            </div>
+          
+          {% endfor %}
+        {% else %}
+        <h2>No Reviews yet!</h2>
+        {% endif %}
       </div>
     </div>
 
