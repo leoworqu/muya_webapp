@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block navmenu %}
+      <div class="menu">
+        <a href="account"><button class="button">Account</button></a>
+        <a href="logout"><button class="button1">Log Out</button></a>
+      </div>
+{% endblock navmenu %}
+
+{% block content %}
+        <form method="POST" action="" class="form" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="fieldset">
+                <legend class="legend">Create a Service</legend>
+                <div>
+                    {{  form.title.label(class="") }}
+                    {{  form.title(class="input") }}
+                </div>
+                <div>
+                    {{  form.description.label(class="") }}
+                    {{  form.description(class="input") }}
+                </div>
+                <div>
+                    {{  form.service_picture.label(class="") }}
+                    {{  form.service_picture(class="input") }}
+                    {% if form.service_picture.errors %}
+                      {% for errors in form.service_picture.errors %}
+                        <span class="text_danger">{{errors}}</span></br>
+                      {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div>
+                {{  form.submit(class="submit") }}
+            </div>
+        </form>
+{% endblock %}

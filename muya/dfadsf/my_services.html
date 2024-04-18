@@ -1,0 +1,20 @@
+<div class="s_header">
+    <h1>MY SERVICES</h1>
+</div>
+<div class="card-list">
+    {% for service in user_service %}
+        <a href="{{ url_for('service', service_id=service.id) }}" class="card-item">
+            <img src="{{ url_for('static', filename='service_images/' + service.image_files) }}" alt="Card Image">
+            <span class="developer">Developer</span>
+            <h3>{{service.title}}</h3>
+            <p>{{service.content}}</p>
+            <div class="cont">
+                <i class="fas fa-arrow-right card-icon"></i>
+                    <div class="s_profile-info">
+                    <img src="{{url_for('static', filename='profile_images/' + service.author.image_file )}}" alt="Profile Picture">
+                    </div>     
+            </div> 
+        </a>
+    {% endfor %}
+</div>
+

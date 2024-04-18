@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="" class="form">
+        {{ form.hidden_tag() }}
+        <fieldset class="fieldset">
+            <legend class="legend">Register an account</legend>
+            <div>
+                {{  form.username.label(class="") }}
+                {{  form.username(class="input") }}
+            </div>
+            <div>
+                {{  form.email.label(class="") }}
+                {{  form.email(class="input") }}
+            </div>
+            <div>
+                {{  form.password.label(class="") }}
+                {{  form.password(class="input") }}
+            </div>
+            <div>
+                {{  form.confirm_password.label(class="") }}
+                {{  form.confirm_password(class="input") }}
+            </div>
+        </fieldset>
+        <div>
+            {{  form.submit(class="submit") }}
+        </div>
+    </form>
+</div>
+<div class="redirect">
+    <small>
+        Already Have An Account? <a href="login">Log into account</a>
+    </small>
+</div>
+
+{% endblock %}
