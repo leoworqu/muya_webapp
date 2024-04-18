@@ -210,5 +210,5 @@ def account():
 
 @app.route("/")
 def index():
-    posts = Service.query.all()
+    posts = Service.query.paginate(per_page=9, page=1)
     return render_template("home.html", posts=posts)

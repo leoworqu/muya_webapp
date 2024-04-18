@@ -9,6 +9,7 @@
     align-items: center;
     flex-direction: column;
     height: 510px;
+    padding-bottom: 45px;
   }
   
   .hero h1{
@@ -39,65 +40,57 @@
 
 
 
-
-
-.features-section {
-    display: flex;
-    flex-direction: column;
-    padding: 50px 0;
-    align-items: center;
-}
-
-.features-grid {
+  .features-section {
+    padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    
-}
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+  
+  .feature-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-image {
+    max-width: 399px;
+    height: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
 
-.feature-item {
+  .features-text{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+  } 
+
+  .features-title{
+    height: 100px;
+    font-size: 13rem;
     text-align: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    align-items: center;
-}
+  }
 
-.feature-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-
-.feature-title- {
-    width: 300px;
-    font-size: 60px;
+  .feature-title {
+    margin-top: 20px;
     color: #333;
-    margin: 30px 0;
-    padding: 30px 0;
-    font-weight: 800;
-}
-
-.feature-title {
-    width: 300px;
-    font-size: 30px;
-    color: #333;
-    margin-bottom: 10px;
-    font-weight: 800;
-}
-
-.feature-description {
-    font-size: 16px;
-    color: #777;
-    line-height: 1.5;
-    width: 500px;
-}
-
-
+  }
+  
+  .feature-description {
+    font-size: 1rem;
+    color: #636;
+  }
+  
 
 .about-section {
     padding: 50px 0;
@@ -162,3 +155,16 @@
 .btn:hover {
     background-color: #0056b3;
 }
+
+
+@media screen and (max-width: 768px) {
+    .feature-item {
+      width: calc(50% - 20px); /* Adjust for smaller screens */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .feature-item {
+      width: 100%; /* Stack items on smaller screens */
+    }
+  }
