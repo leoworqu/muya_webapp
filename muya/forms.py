@@ -6,6 +6,7 @@ from muya.models import User
 
 
 class registrationForm(FlaskForm):
+    # Form for user registration
     username = StringField('Username', validators=[DataRequired(),
                                                   Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(),
@@ -17,6 +18,7 @@ class registrationForm(FlaskForm):
 
 
 class loginForm(FlaskForm):
+    # Form for user login
     email = StringField('Email', validators=[DataRequired(),
                                              Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -24,6 +26,7 @@ class loginForm(FlaskForm):
     submit = SubmitField('Log In')
 
 class accountUpdateForm(FlaskForm):
+    # Form for updating user account information
     username = StringField('Username', validators=[DataRequired(),
                                                   Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(),
@@ -34,13 +37,15 @@ class accountUpdateForm(FlaskForm):
 
 
 class postForm(FlaskForm):
+    # Form for creating a new post/job
     title = StringField('Title of Job', validators=[DataRequired()])
     description = TextAreaField('Detailed description of Job' , validators=[DataRequired()])
-    service_picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
+    service_picture = FileField('Upload Job Picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField('Create Job')
 
 
 class reviewForm(FlaskForm):
+    # Form for submitting a review/comment on a service
     comment = TextAreaField('Add a Comment' , validators=[DataRequired()])
     like_or_dislike = BooleanField('DisLike This Service')
     submit = SubmitField('submit')

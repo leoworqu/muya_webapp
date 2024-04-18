@@ -9,38 +9,36 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 
 
-
-
+# Function to save profile images
 def save_images(form_picture):
-    R_HEX = secrets.token_hex(8)
-    _, f_ext =os.path.splitext(form_picture.filename)
-    PIC_FN = R_HEX + f_ext
-    picture_path = os.path.join(app.root_path, 'static/profile_images', PIC_FN)
+    R_HEX = secrets.token_hex(8)  # Generate a random hex string
+    _, f_ext =os.path.splitext(form_picture.filename)  # Extract file extension
+    PIC_FN = R_HEX + f_ext  # Combine random hex and file extension to form filename
+    picture_path = os.path.join(app.root_path, 'static/profile_images', PIC_FN)  # Define picture path
     
-    output_size = (200, 200)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
-    i.save(picture_path)
+    output_size = (200, 200)  # Set output size for profile image
+    i = Image.open(form_picture)  # Open the uploaded image
+    i.thumbnail(output_size)  # Resize image
+    i.save(picture_path)  # Save resized image
 
-    return PIC_FN
+    return PIC_FN  # Return the filename
 
+# Function to save service images
 def save_image(form_picture):
-    R_HEX = secrets.token_hex(8)
-    _, f_ext =os.path.splitext(form_picture.filename)
-    PIC_FN = R_HEX + f_ext
-    picture_path = os.path.join(app.root_path, 'static/service_images', PIC_FN)
+    R_HEX = secrets.token_hex(8)  # Generate a random hex string
+    _, f_ext =os.path.splitext(form_picture.filename)  # Extract file extension
+    PIC_FN = R_HEX + f_ext  # Combine random hex and file extension to form filename
+    picture_path = os.path.join(app.root_path, 'static/service_images', PIC_FN)  # Define picture path
     
-    output_size = (500, 500)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
-    i.save(picture_path)
+    output_size = (500, 500)  # Set output size for service image
+    i = Image.open(form_picture)  # Open the uploaded image
+    i.thumbnail(output_size)  # Resize image
+    i.save(picture_path)  # Save resized image
 
-    return PIC_FN
-
-
+    return PIC_FN  # Return the filename
 
 
-
+# Route for user registration
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -64,6 +62,7 @@ def register():
     return render_template("register.html", form=form)
 
 
+# Route for user login
 @app.route("/login",  methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -82,23 +81,14 @@ def login():
     return render_template("login.html", form=form)
 
 
-
+# Route for user logout
 @app.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
-
-
-
-
-
-
-
-
-
-
+# Route for viewing a service
 @app.route("/service/<int:service_id>", methods=['GET', 'POST'])
 def service(service_id):
     form = reviewForm()
@@ -118,6 +108,7 @@ def service(service_id):
                            form=form, reviews=reviews, user_service=user_service)
 
 
+# Route for creating a new service
 @app.route("/new_service",  methods=['GET', 'POST'])
 @login_required
 def create_service():
@@ -139,6 +130,7 @@ def create_service():
     return render_template("create_service.html", form=form)
 
 
+# Route for updating a service
 @app.route("/service/<int:service_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_service(service_id):
@@ -160,6 +152,8 @@ def update_service(service_id):
         form.description.data = service.content
     return render_template("updateservice.html", service=service, form=form)
 
+
+# Route for deleting a service
 @app.route("/service/<int:service_id>/delete", methods=['POST'])
 @login_required
 def delete_service(service_id):
@@ -172,15 +166,7 @@ def delete_service(service_id):
     return redirect(url_for('index'))
 
 
-
-
-
-
-
-
-
-
-
+# Route for user account page
 @app.route("/account",  methods=['GET', 'POST'])
 @login_required
 def account():
@@ -204,10 +190,7 @@ def account():
                            form=form, user_service=user_service, reviews=reviews)
 
 
-
-
-
-
+# Route for the home page
 @app.route("/")
 def index():
     posts = Service.query.paginate(per_page=9, page=1)
