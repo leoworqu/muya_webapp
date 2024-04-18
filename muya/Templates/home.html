@@ -10,7 +10,7 @@
   {% else %}
       <div class="menu">
         <a href="{{url_for('login')}}"><button class="button">Log in</button></a>
-        <a href="{{url_for('register')}}"><button class="button1">Sign up</button></a>
+        <a href="{{ url_for('register') }}"><button class="button1">Sign up</button></a>
       </div>
   {% endif %}
 {% endblock navmenu %}
